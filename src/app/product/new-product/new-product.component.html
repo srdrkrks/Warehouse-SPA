@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
+<div class="modal-body">
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="name">Name</span>
+    <input type="text" class="form-control" placeholder="Product Name" aria-label="Product Name"
+           [(ngModel)]="productName"
+           aria-describedby="name"/>
+  </div>
+
+  <div class="input-group desc">
+    <span class="input-group-text">Description</span>
+    <textarea class="form-control" aria-label="With textarea"  [(ngModel)]="productDesc"></textarea>
+  </div>
+
+  <div class="input-group  mb-3"  >
+    <span class="input-group-text">Put in a Box</span>
+    <select ngModel name="option" class="form-control selectBox select select-input" id="selectAction"  [(ngModel)]="box_id">
+
+      <option *ngFor="let box of boxArr" [selected]="box.id == box_id" [value]="box.id">
+        {{ box.name }}
+      </option>
+    </select>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+    Close
+  </button>
+  <button type="button" class="btn btn-primary" (click)="save()">Save changes</button>
+</div>
